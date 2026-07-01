@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: vote
+  name: vote
+  namespace: voting-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vote
+  template:
+    metadata:
+      labels:
+        app: vote
+    spec:
+      dnsPolicy: ClusterFirst
+      containers:
+      - image: docker.io/dockersamples/examplevotingapp_vote:before
+        name: vote
+        ports:
+        - containerPort: 80
+          name: vote
