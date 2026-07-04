@@ -31,7 +31,7 @@ spec:
     spec:
       dnsPolicy: ClusterFirst
       containers:
-      - image: docker.io/dockersamples/examplevotingapp_result:before
+      - image: docker.io/dockersamples/examplevotingapp_result:after
         name: result
         ports:
         - containerPort: 80
