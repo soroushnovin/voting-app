@@ -12,8 +12,14 @@ spec:
       app: result
   strategy:
     canary:
+      canaryService: result-canary
       # optional: define a stable service (for traffic routing)
       stableService: result   # must exist
+      trafficRouting:
+        nginx:
+          # Reference to an Ingress which has a rule pointing to the stable service (e.g. rollouts-demo-stable)
+          # This ingress will be cloned with a new name, in order to achieve NGINX traffic splitting.
+          stableIngress: result
       steps:
       - setWeight: 20          # send 20% traffic to canary
       - pause: {}              # wait for manual promotion (via CLI or UI)
@@ -31,7 +37,7 @@ spec:
     spec:
       dnsPolicy: ClusterFirst
       containers:
-      - image: docker.io/dockersamples/examplevotingapp_result:after
+      - image: docker.io/dockersamples/examplevotingapp_result:before
         name: result
         ports:
         - containerPort: 80
