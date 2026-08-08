@@ -24,7 +24,7 @@ spec:
           name: result
         env:
           - name: POSTGRES_HOST
-            value: postgres.voting-db.svc.cluster.local
+            value: db.voting-db.svc.cluster.local
 
           - name: POSTGRES_PORT
             value: "5432"
