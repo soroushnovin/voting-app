@@ -4,7 +4,7 @@ metadata:
   labels:
     app: result
   name: result
-  namespace: voting-application
+  namespace: voting-result
 spec:
   replicas: 1
   selector:

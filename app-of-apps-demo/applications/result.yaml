@@ -13,7 +13,7 @@ spec:
     path: app-of-apps-demo/result
   destination:
     server: https://kubernetes.default.svc
-    namespace: voting-application
+    namespace: voting-result
   syncPolicy:
     automated:
       prune: true
