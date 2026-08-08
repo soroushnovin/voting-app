@@ -19,3 +19,9 @@ spec:
       containers:
       - image: docker.io/dockersamples/examplevotingapp_worker
         name: worker
+        env:
+          - name: POSTGRES_HOST
+            value: postgres.voting-db.svc.cluster.local
+
+          - name: POSTGRES_PORT
+            value: "5432"
