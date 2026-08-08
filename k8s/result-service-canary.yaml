@@ -4,7 +4,7 @@ metadata:
   labels:
     app: result
   name: result-canary
-  namespace: voting-app
+  namespace: test
 spec:
   type: NodePort
   ports:
