@@ -1,5 +1,5 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Rollout
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   labels:
     app: result
@@ -10,26 +10,6 @@ spec:
   selector:
     matchLabels:
       app: result
-  strategy:
-    canary:
-      canaryService: result-canary
-      # optional: define a stable service (for traffic routing)
-      stableService: result   # must exist
-      trafficRouting:
-        nginx:
-          # Reference to an Ingress which has a rule pointing to the stable service (e.g. rollouts-demo-stable)
-          # This ingress will be cloned with a new name, in order to achieve NGINX traffic splitting.
-          stableIngress: result
-      steps:
-      - setWeight: 20          # send 20% traffic to canary
-      - pause: {}              # wait for manual promotion (via CLI or UI)
-      - setWeight: 40
-      - pause: {duration: 30}  # wait 30 seconds automatically
-      - setWeight: 60
-      - pause: {duration: 30}
-      - setWeight: 80
-      - pause: {duration: 30}
-      # after all steps, remaining 100% goes to new version automatically
   template:
     metadata:
       labels:
