@@ -6,7 +6,7 @@ metadata:
   name: result
   namespace: voting-app
 spec:
-  replicas: 1
+  replica: 3
   selector:
     matchLabels:
       app: result
@@ -17,7 +17,7 @@ spec:
     spec:
       dnsPolicy: ClusterFirst
       containers:
-      - image: docker.io/dockersamples/examplevotingapp_result:before
+      - image: docker.io/dockersamples/examplevotingapp_result:after
         name: result
         ports:
         - containerPort: 80
