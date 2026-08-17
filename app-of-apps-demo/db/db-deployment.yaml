@@ -4,7 +4,7 @@ metadata:
   labels:
     app: db
   name: db
-  namespace: voting-db
+  namespace: voting-app
 spec:
   replicas: 1
   selector:
@@ -18,11 +18,6 @@ spec:
       containers:
       - image: docker.io/postgres:9.4
         name: postgres
-        env:
-        - name: POSTGRES_USER
-          value: postgres
-        - name: POSTGRES_PASSWORD
-          value: postgres
         ports:
         - containerPort: 5432
           name: postgres
