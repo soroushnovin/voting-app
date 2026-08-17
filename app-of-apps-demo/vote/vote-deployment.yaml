@@ -4,7 +4,7 @@ metadata:
   labels:
     app: vote
   name: vote
-  namespace: voting-vote
+  namespace: voting-app
 spec:
   replicas: 1
   selector:
@@ -22,9 +22,3 @@ spec:
         ports:
         - containerPort: 80
           name: vote
-        env:
-          - name: REDIS_HOST
-            value: redis.voting-redis.svc.cluster.local
-
-          - name: REDIS_PORT
-            value: "6379"
