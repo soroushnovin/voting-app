@@ -14,7 +14,7 @@ spec:
 
   destination:
     server: https://kubernetes.default.svc
-    namespace: voting-worker
+    namespace: voting-app
   syncPolicy:
     automated:
       prune: true
